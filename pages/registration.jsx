@@ -87,7 +87,7 @@ export function Registration() {
                     github: formData.github
                 }
 
-                const apiReq = await fetch("/api/uploadUserProfile", {
+                const apiReq = await fetch("https://moog3.herokuapp.com/api/uploadUserProfile", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
