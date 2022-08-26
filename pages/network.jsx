@@ -69,7 +69,7 @@ export function Network() {
         </div>
     )
     const profileCards = profileData?.map(profile =>
-        <div onClick={() => router.push(`/profile/?profAddress=${profile[0]}`).then()} key={profile[1]}
+        <div onClick={() => router.push(`/user-profile/?profAddress=${profile[0]}`).then()} key={profile[1]}
             className={styles.projectUsersDiv}>
             <img alt={"user pfp"} className={styles.projectUsersPic} src={profile[3]} draggable={false} />
             <div className={styles.projectUsersTitle}>{profile[2]}</div>
