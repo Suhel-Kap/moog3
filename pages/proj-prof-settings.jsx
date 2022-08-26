@@ -1,8 +1,6 @@
 import formStyles from "../styles/Forms.module.scss"
 import styles from "../styles/Home.module.scss"
-import { AiOutlinePlusCircle } from "react-icons/ai"
 import React, { useEffect, useState } from "react"
-import { IconContext } from "react-icons/lib"
 import Sidebar from "../components/Sidebar"
 import getWalletAddress from "../utils/getWalletAddress"
 import { getCookies } from "cookies-next"
@@ -37,8 +35,8 @@ export default function PickAProj() {
                     <div className={styles.alignDivProj}>
                         <div className={styles.projSection}>
                             <div className={styles.projTitle}>{user?.name}</div>
-                            <a href={`/settings/${wallet}`} className={styles.projSectionA}>
-                                <img className={styles.pfp} src={user?.imageUri} />
+                            <a href={`/user-profile-settings/?profAddress=${wallet}`} className={styles.projSectionA}>
+                                <img alt={"user-pfp"} className={styles.pfp} src={user?.imageUri} />
                             </a>
                         </div>
                         {
@@ -46,7 +44,7 @@ export default function PickAProj() {
                             ids?.ids.map((name) =>
                                 <div className={styles.projSection}>
                                     <div className={styles.projTitle}>{name[1]}</div>
-                                    <a href={`/settings/${wallet}/${name[0]}`} className={styles.projSectionA}>
+                                    <a href={`/project-settings/?profAddress=${wallet}&id=${name[0]}`} className={styles.projSectionA}>
                                         <img alt={"project pfp"} className={styles.pfp} src={name[2]} />
                                     </a>
                                 </div>

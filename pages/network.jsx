@@ -47,9 +47,9 @@ export function Network() {
         })
     }, [])
     const projectCards = projectData?.map(project =>
-        <div onClick={() => router.push(`/proj-profile/${project[0]}/${project[1]}`).then()} key={project[1]}
+        <div onClick={() => router.push(`/project-profile/?profAddress=${project[0]}&id=${project[1]}`).then()} key={project[1]}
             className={styles.projectUsersDiv}>
-            <img className={styles.projectUsersPic} src={project[3]} draggable={false} />
+            <img alt={"project logo"} className={styles.projectUsersPic} src={project[3]} draggable={false} />
             <div className={styles.projectUsersTitle}>{project[2]}</div>
             <div className={styles.projectUsersDescription}>{project[4].slice(0, 20)}...</div>
             <IconContext.Provider
@@ -69,9 +69,9 @@ export function Network() {
         </div>
     )
     const profileCards = profileData?.map(profile =>
-        <div onClick={() => router.push(`/profile/${profile[0]}`).then()} key={profile[1]}
+        <div onClick={() => router.push(`/profile/?profAddress=${profile[0]}`).then()} key={profile[1]}
             className={styles.projectUsersDiv}>
-            <img className={styles.projectUsersPic} src={profile[3]} draggable={false} />
+            <img alt={"user pfp"} className={styles.projectUsersPic} src={profile[3]} draggable={false} />
             <div className={styles.projectUsersTitle}>{profile[2]}</div>
             <div className={styles.projectUsersDescription}>{profile[4].slice(0, 20)}...</div>
             <IconContext.Provider
@@ -91,11 +91,9 @@ export function Network() {
         </div>
     )
     function toggleProfile() {
-        console.log("I was clicked")
         setShowProfile(prevState => !prevState)
     }
     function toggleProject() {
-        console.log("I was clicked too")
         setShowProject(prevState => !prevState)
     }
     return (

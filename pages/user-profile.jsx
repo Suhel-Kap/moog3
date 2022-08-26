@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import dynamic from "next/dynamic"
 const Profile = dynamic(
-    () => import("../../components/Profile"),
+    () => import("../components/Profile"),
     {ssr: false}
 )
 

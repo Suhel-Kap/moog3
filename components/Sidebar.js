@@ -2,21 +2,15 @@ import React, { useState } from "react"
 import sideStyles from "../styles/Sidebar.module.scss"
 import { motion, AnimatePresence } from "framer-motion"
 import { BiMenu } from "react-icons/bi"
-import { AiOutlineClose, AiOutlineMessage, AiOutlineFundProjectionScreen } from "react-icons/ai"
+import { AiOutlineClose, AiOutlineFundProjectionScreen } from "react-icons/ai"
 import { BiHomeAlt } from "react-icons/bi"
 import { IconContext } from "react-icons"
 import { FaRegUserCircle } from "react-icons/fa"
-import { BiNetworkChart } from "react-icons/bi"
-import { MdOutlineManageAccounts } from "react-icons/md"
 import { HiOutlineCog } from "react-icons/hi"
 import { sequence } from "0xsequence"
 import { deleteCookie, getCookies } from "cookies-next"
 import { useRouter } from "next/router"
 
-const variants = {
-    open: { opacity: 1, x: 0 },
-    closed: { opacity: 0, x: "-100%" },
-}
 const showAnimation = {
     hidden: {
         opacity: 0,
@@ -90,7 +84,7 @@ const Sidebar = () => {
                                         </motion.li>
 
                                         <motion.li className={sideStyles.sideLi}>
-                                            <a className={sideStyles.sideA} href={`/profile/${wallet}`}>
+                                            <a className={sideStyles.sideA} href={`/user-profile/?profAddress=${wallet}`}>
                                                 {" "}
                                                 <FaRegUserCircle /> Profile
                                             </a>

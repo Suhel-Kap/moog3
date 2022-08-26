@@ -8,7 +8,7 @@ module.exports = {
   nextConfig,
   images: {
     loader: 'akamai',
-    path: '',
+    path: ''
   },
-  trailingSlash: true,
+  trailingSlash: true
 }

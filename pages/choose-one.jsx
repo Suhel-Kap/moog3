@@ -24,7 +24,6 @@ export default function PickAProj() {
             getProjectByAddress(wallet).then(res => setIds(res))
         })
     }, [router.query])
-    console.log("ids", ids)
     return (
 
         <div className={formStyles.backgroundImg}>
@@ -38,9 +37,9 @@ export default function PickAProj() {
                         {
                             ids?.response !== "data not found" &&
                             ids?.ids.map((name) =>
-                                <div className={styles.projSection}>
+                                <div key={name[0]} className={styles.projSection}>
                                     <div className={styles.projTitle}>{name[1]}</div>
-                                    <a href={`/proj-profile/${wallet}/${name[0]}`} className={styles.projSectionA}>
+                                    <a href={`/project-profile/?profAddress=${wallet}&id=${name[0]}`} className={styles.projSectionA}>
                                         <img alt={"project pfp"} className={styles.pfp} src={name[2]} />
                                     </a>
                                 </div>

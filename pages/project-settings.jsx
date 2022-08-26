@@ -1,20 +1,20 @@
-import formStyles from "../../../../styles/FormSettings.module.scss"
+import formStyles from "../styles/FormSettings.module.scss"
 import { Checkbox, Spacer } from "@nextui-org/react"
 import React, { useEffect, useState } from "react"
-import Sidebar from "../../../../components/Sidebar"
+import Sidebar from "../components/Sidebar"
 import { IconContext } from "react-icons/lib"
 import { AiFillGithub } from "react-icons/ai"
 import { MdComputer } from "react-icons/md"
 import { FiTwitter } from "react-icons/fi"
 import { TbBrandDiscord } from "react-icons/tb"
 import { useRouter } from "next/router"
-import useUploadToStorage from "../../../../hooks/useUploadToStorage"
+import useUploadToStorage from "../hooks/useUploadToStorage"
 import toast, { Toaster } from "react-hot-toast"
-import useContract from "../../../../hooks/useContract"
+import useContract from "../hooks/useContract"
 import { getCookies } from "cookies-next"
 import { TailSpin } from "react-loader-spinner"
-import getProjectDataById from "../../../../utils/getProjectDataById"
-import getWalletAddress from "../../../../utils/getWalletAddress"
+import getProjectDataById from "../utils/getProjectDataById"
+import getWalletAddress from "../utils/getWalletAddress"
 
 export function EditProject() {
     const router = useRouter()
@@ -73,7 +73,7 @@ export function EditProject() {
             twitter: userFormData.twitter
         }
         try {
-            const apiReq = await fetch("/api/uploadUserProfile", {
+            const apiReq = await fetch("https://moog3.herokuapp.com/api/uploadUserProfile", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

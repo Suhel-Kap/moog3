@@ -1,22 +1,22 @@
-import formStyles from "../../../styles/FormSettings.module.scss"
+import formStyles from "../styles/FormSettings.module.scss"
 import { Checkbox, Spacer } from "@nextui-org/react"
 import React, { useEffect, useState } from "react"
-import Sidebar from "../../../components/Sidebar"
+import Sidebar from "../components/Sidebar"
 import { IconContext } from "react-icons/lib"
 import { AiFillGithub } from "react-icons/ai"
 import { MdComputer } from "react-icons/md"
 import { FiTwitter } from "react-icons/fi"
 import { TbBrandDiscord } from "react-icons/tb"
 import { useRouter } from "next/router"
-import getProfileData from "../../../utils/getProfileData"
-import useUploadToStorage from "../../../hooks/useUploadToStorage"
+import getProfileData from "../utils/getProfileData"
+import useUploadToStorage from "../hooks/useUploadToStorage"
 import toast, { Toaster } from "react-hot-toast"
-import useContract from "../../../hooks/useContract"
+import useContract from "../hooks/useContract"
 import { getCookies } from "cookies-next"
 import { TailSpin } from "react-loader-spinner"
-import getWalletAddress from "../../../utils/getWalletAddress"
+import getWalletAddress from "../utils/getWalletAddress"
 
-export function LogIn() {
+export function UserProfileSettings() {
     const router = useRouter()
     const { uploadFile } = useUploadToStorage()
     const { updateUserProf } = useContract()
@@ -73,7 +73,7 @@ export function LogIn() {
             twitter: userFormData.twitter
         }
         try {
-            const apiReq = await fetch("/api/uploadUserProfile", {
+            const apiReq = await fetch("https://moog3.herokuapp.com/api/uploadUserProfile", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -339,4 +339,4 @@ export function LogIn() {
     )
 }
 
-export default LogIn
+export default UserProfileSettings

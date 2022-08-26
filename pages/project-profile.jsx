@@ -1,6 +1,6 @@
-import styles from "../../../styles/Profile.module.scss"
-import modalStyles from "../../../styles/Modal.module.scss"
-import Sidebar from "../../../components/Sidebar"
+import styles from "../styles/Profile.module.scss"
+import modalStyles from "../styles/Modal.module.scss"
+import Sidebar from "../components/Sidebar"
 import { TbBrandDiscord, TbHammer } from "react-icons/tb"
 import { IconContext } from "react-icons"
 import { AiOutlineCloseCircle, AiOutlineGithub, AiOutlinePicture, AiOutlinePlusCircle, AiOutlineTwitter } from "react-icons/ai"
@@ -10,22 +10,22 @@ import { FaHands } from "react-icons/fa"
 import { BiLike } from "react-icons/bi"
 import { AnimatePresence, motion } from "framer-motion"
 import React, { useEffect, useState } from "react"
-import { backdrop, modal } from "../../../animations/modalAnimations"
+import { backdrop, modal } from "../animations/modalAnimations"
 import { getCookies } from "cookies-next"
 import { useRouter } from "next/router"
-import getProjectDataById from "../../../utils/getProjectDataById"
-import getWalletAddress from "../../../utils/getWalletAddress"
+import getProjectDataById from "../utils/getProjectDataById"
+import getWalletAddress from "../utils/getWalletAddress"
 import { TailSpin } from "react-loader-spinner"
-import formStyles from "../../../styles/FormSettings.module.scss"
-import useUploadToStorage from "../../../hooks/useUploadToStorage"
+import formStyles from "../styles/FormSettings.module.scss"
+import useUploadToStorage from "../hooks/useUploadToStorage"
 import toast, { Toaster } from "react-hot-toast"
-import useContract from "../../../hooks/useContract"
+import useContract from "../hooks/useContract"
 import Link from "next/link"
-import getContributionDataByProjectId from "../../../utils/getContributionDataByProjectId"
-import getPostDataById from "../../../utils/getPostDataById"
-import getProfileDataById from "../../../utils/getProfileDataById"
-import getContributionCardData from "../../../utils/getContributionCardData"
-import { sendMatic } from "../../../utils/sendMatic"
+import getContributionDataByProjectId from "../utils/getContributionDataByProjectId"
+import getPostDataById from "../utils/getPostDataById"
+import getProfileDataById from "../utils/getProfileDataById"
+import getContributionCardData from "../utils/getContributionCardData"
+import { sendMatic } from "../utils/sendMatic"
 
 const Profile = () => {
     const [connect, setConnect] = useState(false)
@@ -170,7 +170,7 @@ const Profile = () => {
             github: contributionForm.github
         }
         try {
-            const apiReq = await fetch("/api/uploadUserProfile", {
+            const apiReq = await fetch("https://moog3.herokuapp.com/api/uploadUserProfile", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -222,7 +222,7 @@ const Profile = () => {
         contributionCard = contributionCardData?.map(item =>
             <div className={styles.smallCard}>
                 <div className={styles.contributorsImg}>
-                    <a href={`/profile/${item?.authorWallet}`}>
+                    <a href={`/user-profile/?profAddress=${item?.authorWallet}`}>
                         <img src={item?.authorPfp} alt="contributor" className={styles.contributorsPicPic} />
                     </a>
                 </div>
@@ -302,10 +302,10 @@ const Profile = () => {
                             <p className={modalStyles.modalP}>These people like {data.name}!</p>
                             <ul className={modalStyles.modalContainer}>
                                 {
-                                    followers.map(follower =>
+                                    followers?.map(follower =>
                                         <li className={modalStyles.someFlex}>
                                             <img className={modalStyles.picModal} src={follower.imageUri} alt="" />
-                                            <a href={`/profile/${follower.wallet}`}
+                                            <a href={`/user-profile/?profAddress=${follower.wallet}`}
                                                className={modalStyles.postsContentModal}>
                                                 {follower.name}
                                             </a>
@@ -354,7 +354,6 @@ const Profile = () => {
                             {showNFTDiv && (
                                 <div className={modalStyles.containerPop}>
                                     <div className={modalStyles.displayNftSection}>
-                                        <img src="" alt="" />
                                         <div>
                                             {
                                                 userNfts.map(item =>
@@ -403,7 +402,7 @@ const Profile = () => {
                             {showDaiDiv && (
                                 <div className={modalStyles.containerPop}>
                                     <div className={modalStyles.displayNftSection}>
-                                        <img src="" alt="" />
+                                        <img src="pages/project-profile" alt="" />
                                     </div>
                                     <div>
                                         <div className={modalStyles.titlesSection}>
